@@ -26,6 +26,4 @@ int solution(string ineq, string eq, int n, int m) {
             return n > m;
         }
     }
-    int answer = 0;
-    return answer;
 }
