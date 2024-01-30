@@ -1,0 +1,20 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(vector<int> num_list) {
+    int total = 0;
+    for(int i : num_list)
+    {
+        while(i != 1)
+        {
+            if(i % 2 == 0)
+                i /= 2;
+            else
+                i = (i - 1) / 2;
+            total++;
+        }
+    }
+    return total;
+}
