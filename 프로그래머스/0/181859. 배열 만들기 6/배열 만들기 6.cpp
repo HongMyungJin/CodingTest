@@ -9,9 +9,7 @@ vector<int> solution(vector<int> arr) {
     
     while(i < arr.size())
     {
-        if(stk.empty())
-            stk.emplace_back(arr[i]);
-        else if(stk.back() == arr[i])
+        if(!stk.empty() && stk.back() == arr[i])
             stk.pop_back();
         else
             stk.emplace_back(arr[i]);
