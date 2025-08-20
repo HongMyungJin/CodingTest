@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <stack>
 using namespace std;
 
 int N;
@@ -7,21 +8,30 @@ vector<bool> visited;
 vector<int> parents;
 vector<vector<int>> adj;
 
-void DFS(int n)
+void DFS()
 {
-	if (visited[n])
-		return;
+	stack<int> st;
 
-	visited[n] = true;
-	for (int i = 0; i < adj[n].size(); i++)
+	st.push(0);
+	while (!st.empty())
 	{
-		int adjValue = adj[n][i];
-		if (!visited[adjValue])
+		int n = st.top();
+		st.pop();
+		if (visited[n])
+			continue;
+		visited[n] = true;
+		for (int i = 0; i < adj[n].size(); i++)
 		{
-			parents[adjValue] = n;
-			DFS(adjValue);
+			int adjValue = adj[n][i];
+			if (!visited[adjValue])
+			{
+				parents[adjValue] = n;
+				st.push(adjValue);
+			}
 		}
 	}
+
+
 }
 
 int main()
@@ -43,7 +53,7 @@ int main()
 		adj[input[1] - 1].emplace_back(input[0] - 1);
 	}
 
-	DFS(0);
+	DFS();
 	for (int i = 1; i < parents.size(); i++)
 	{
 		cout << parents[i] + 1 << '\n';
