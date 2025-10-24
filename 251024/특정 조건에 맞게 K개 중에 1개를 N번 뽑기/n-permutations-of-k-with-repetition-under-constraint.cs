@@ -11,21 +11,24 @@ public class Codetree
 
     private static bool sameCheck(int n)
     {
-        List<int> sames = new List<int>();
 
-        for (int i = 0; i < K; i++)
+        int prevalue = combines[0];
+        int same = 1;
+        for (int i = 1; i < combines.Count; i++)
         {
-            sames.Add(0);
-        }
-
-        foreach (int value in combines)
-        {
-            ++sames[value - 1];
-
-            if (sames[value - 1] >= n)
+            if(combines[i] == prevalue)
             {
-                return false;
+                same++;
+                if (same >= 3)
+                {
+                    return false;
+                }
             }
+            else
+            {
+                same = 1;
+            }
+            prevalue = combines[i];
         }
         return true;
     }
