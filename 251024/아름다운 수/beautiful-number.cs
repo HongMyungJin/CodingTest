@@ -1,38 +1,46 @@
 using System;
 using System.Collections.Generic;
 public class Codetree
-{  
+{
     private static List<int> _values;
     private static int _solveN;
     private static int _N;
 
     private static bool Check()
     {
-        List<int> nums = new List<int>{0, 0, 0, 0};
-
-        int n = 1;
-        int preValue = _values[0]; // 첫번째 값
-        for(int i = 1; i < _values.Count; i++)
+        // 개수만큼 있는지 테스트 1이면 1개 2이면 2개
+        int n = 0;
+        int preValue = _values[0];
+        for (int i = 0; i < _N; i++)
         {
-            if (_values[i] == preValue)
+            // 이전값이랑 현재값이랑 같을 경우 증가
+            if (preValue == _values[i])
             {
                 n++;
-            }
-            else
-            {
-                if (n != preValue)
+
+                if (_values[i] == n)
+                {
+                    n = 0; // 초기화
+                }
+                else if (i == _N - 1) // 마지막일 경우
                 {
                     return false;
                 }
             }
+            else // 다를 경우
+            {
+                // 이전 값이랑 개수가 다르다면
+                if (preValue != n)
+                {
+                    return false;
+                }
+
+                n = 1;
+            }
+
             preValue = _values[i];
         }
 
-        // 개수가 1개일 경우 1이 아니라면 false
-        if (_values.Count == 1 && _values[0] != 1)
-        {
-            return false;
-        }
 
         return true;
     }
@@ -41,7 +49,7 @@ public class Codetree
         // N개를 다 채웠으면(N개 이후 1만큼 더 들어왔으면)
         if (count == _N + 1)
         {
-            if(Check())
+            if (Check())
             {
                 _solveN++; // 개수 증가
             }
