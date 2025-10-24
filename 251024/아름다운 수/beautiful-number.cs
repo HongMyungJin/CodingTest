@@ -8,40 +8,24 @@ public class Codetree
 
     private static bool Check()
     {
-        // 개수만큼 있는지 테스트 1이면 1개 2이면 2개
-        int n = 0;
-        int preValue = _values[0];
-        for (int i = 0; i < _N; i++)
+        int i = 0;
+
+        while (i < _N)
         {
-            // 이전값이랑 현재값이랑 같을 경우 증가
-            if (preValue == _values[i])
-            {
-                n++;
+            int cur = _values[i];
+            int count = 0;
 
-                if (_values[i] == n)
-                {
-                    n = 0; // 초기화
-                }
-                else if (i == _N - 1) // 마지막일 경우
-                {
-                    return false;
-                }
-            }
-            else // 다를 경우
+            while (i < _N && cur == _values[i])
             {
-                // 이전 값이랑 개수가 다르다면
-                if (preValue != n)
-                {
-                    return false;
-                }
-
-                n = 1;
+                count++;
+                i++;
             }
 
-            preValue = _values[i];
+            if (count % cur != 0)
+            {
+                return false;
+            }
         }
-
-
         return true;
     }
     private static void Solve(int count)
