@@ -9,18 +9,31 @@ public class Codetree
     private static bool Check()
     {
         List<int> nums = new List<int>{0, 0, 0, 0};
-        foreach (int value in _values)
+
+        int n = 1;
+        int preValue = _values[0]; // 첫번째 값
+        for(int i = 1; i < _values.Count; i++)
         {
-            nums[value - 1]++;
+            if (_values[i] == preValue)
+            {
+                n++;
+            }
+            else
+            {
+                if (n != preValue)
+                {
+                    return false;
+                }
+            }
+            preValue = _values[i];
         }
 
-        for(int i = 0; i < nums.Count; i++)
+        // 개수가 1개일 경우 1이 아니라면 false
+        if (_values.Count == 1 && _values[0] != 1)
         {
-            if(!(nums[i] == i + 1 || nums[i] == 0)) // 개수랑 숫자 크기랑 같으면 + 없으면
-            {
-                return false;
-            }
+            return false;
         }
+
         return true;
     }
     private static void Solve(int count)
