@@ -22,6 +22,8 @@ public class Codetree
             return;
         }
 
+        bool isMove = false;
+
         // K번째 전까지 말
         for (int i = 0; i < K; i++)
         {
@@ -32,12 +34,21 @@ public class Codetree
                 continue;
             }
 
-            Moves[i] += MoveData[count];
+            ///////// 여기까지는 이동x
+            /// 이동함.
+            isMove = true;
 
-            bool addScore = Moves[i] >= M;
-            if (addScore)
+            bool addScore = false;
+            if (Moves[i] < M)
             {
-                ++score;
+                Moves[i] += MoveData[count];
+
+                if (Moves[i] >= M)
+                {
+                    Moves[i] = M;
+                    addScore = true;
+                    ++score;
+                }
             }
             // 다음 턴
             // 횟수, 스코어...
@@ -51,7 +62,10 @@ public class Codetree
             Moves[i] -= MoveData[count];
         }
 
-
+        if (isMove)
+        {
+            Solve(count + 1, score);
+        }
     }
     public static void Main()
     {
