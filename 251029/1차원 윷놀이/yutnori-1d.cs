@@ -16,6 +16,15 @@ public class Codetree
     // 말 번호
     private static void Solve(int count, int score)
     {
+        // 남은 턴 수 + 현재 점수 < Max
+        // 절대 Max가 되지 못함
+
+        // 이러면 그냥 종료
+        if (score + N - count < Max)
+        {
+            return;
+        }
+
         if (count == N)
         {
             Max = score > Max ? score : Max;
