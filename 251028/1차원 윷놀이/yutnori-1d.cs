@@ -43,7 +43,7 @@ public class Codetree
             {
                 Moves[i] += MoveData[count];
 
-                if (Moves[i] >= M)
+                if (preMove < M && Moves[i] >= M)
                 {
                     Moves[i] = M;
                     addScore = true;
