@@ -23,7 +23,7 @@ public class Codetree
             }
         }
 
-       
+
     }
     public static void Main()
     {
@@ -59,8 +59,13 @@ public class Codetree
             data[second].Add(first);
         }
 
-        visited[0] = true;
-        DFS(0, 0);
+        for (int i = 0; i < data[0].Count; i++)
+        {
+            visited[i] = true;
+            DFS(i, 0);
+            visited[i] = false;
+        }
+        
 
         Console.Write(Max);
     }
