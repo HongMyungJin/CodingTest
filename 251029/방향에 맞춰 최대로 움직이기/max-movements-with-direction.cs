@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 public class Codetree
-{  
+{
 
     private static int N;
 
@@ -11,8 +11,8 @@ public class Codetree
     private static List<List<int>> Dirs;
     private static List<List<bool>> Visited;
 
-    private static int[] dirX = {0, 1, 1, 1, 0, -1, -1, -1};
-    private static int[] dirY = {-1, -1, 0, 1, 1, 1, 0, -1};
+    private static int[] dirX = { 0, 1, 1, 1, 0, -1, -1, -1 };
+    private static int[] dirY = { -1, -1, 0, 1, 1, 1, 0, -1 };
 
     private static bool InRange(int row, int col)
     {
@@ -46,7 +46,7 @@ public class Codetree
             {
                 continue;
             }
-            
+
             // 현재 값 크기와 이후 값 크기 비교
             if (!IsBig(Grid[row][col], Grid[newRow][newCol]))
             {
@@ -71,10 +71,10 @@ public class Codetree
         Visited = new List<List<bool>>();
         for (int i = 0; i < N; i++)
         {
-            Grid.Add(new List<int>());   
-            Visited.Add(new List<bool>());   
+            Grid.Add(new List<int>());
+            Visited.Add(new List<bool>());
             string[] inputNs = Console.ReadLine().Split(' ');
-            for (int t = 0; t < inputNs.Length; t++)
+            for (int t = 0; t < N; t++)
             {
                 Grid[i].Add(int.Parse(inputNs[t]));
                 Visited[i].Add(false);
@@ -84,10 +84,10 @@ public class Codetree
         Dirs = new List<List<int>>();
         for (int i = 0; i < N; i++)
         {
-            Dirs.Add(new List<int>());   
+            Dirs.Add(new List<int>());
             string[] inputNs = Console.ReadLine().Split(' ');
 
-            for (int t = 0; t < inputNs.Length; t++)
+            for (int t = 0; t < N; t++)
             {
                 Dirs[i].Add(int.Parse(inputNs[t]) - 1);
             }
@@ -96,7 +96,7 @@ public class Codetree
         string[] inputsRowCol = Console.ReadLine().Split(' ');
         int row = int.Parse(inputsRowCol[0]) - 1;
         int col = int.Parse(inputsRowCol[1]) - 1;
-        
+
         Visited[row][col] = true;
         Solve(row, col, 0);
 
