@@ -9,6 +9,19 @@ public class Codetree
     private static List<int> inputs;
     private static List<int> outputs;
 
+    private static bool CheckIncrease()
+    {
+        long value = outputs[0];
+        for (int i = 1; i < M; i++)
+        {
+            if (outputs[i - 1] >= outputs[i])
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
     private static long XORSolve()
     {
         long xorValue = outputs[0];
@@ -24,7 +37,10 @@ public class Codetree
     {
         if (cur == M)
         {
-            Max = Math.Max(XORSolve(), Max);
+            if (CheckIncrease())
+            {
+                Max = Math.Max(XORSolve(), Max);
+            }
             return;
         }
 
