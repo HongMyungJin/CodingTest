@@ -7,23 +7,21 @@ public class Codetree
     private static int N, M;
     private static List<List<int>> data;
     private static List<bool> visited;
-    private static int Max;
+    private static int Count;
 
-    private static void DFS(int vertex, int count)
+    private static void DFS(int vertex)
     {
-        Max = Math.Max(Max, count);
         for (int i = 0; i < data[vertex].Count; i++)
         {
             int cur_v = data[vertex][i];
+
             if (!visited[cur_v])
             {
                 visited[cur_v] = true;
-                DFS(cur_v, count + 1);
-                visited[cur_v] = false;
+                Count++;
+                DFS(cur_v);
             }
         }
-
-
     }
     public static void Main()
     {
@@ -33,17 +31,15 @@ public class Codetree
         N = int.Parse(values[0]);
         M = int.Parse(values[1]);
 
-        Max = 0;
-
         data = new List<List<int>>();
         visited = new List<bool>();
 
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < N + 1; i++)
         {
             data.Add(new List<int>());
         }
 
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < N + 1; i++)
         {
             visited.Add(false);
         }
@@ -52,21 +48,16 @@ public class Codetree
         {
             string[] pair = Console.ReadLine().Split(' ');
 
-            int first = int.Parse(pair[0]) - 1;
-            int second = int.Parse(pair[1]) - 1;
+            int first = int.Parse(pair[0]);
+            int second = int.Parse(pair[1]);
 
             data[first].Add(second);
             data[second].Add(first);
         }
 
-        for (int i = 0; i < N; i++)
-        {
-            visited[i] = true;
-            DFS(i, 0);
-            visited[i] = false;
-        }
+        visited[1] = true;
+        DFS(1);
         
-
-        Console.Write(Max);
+        Console.Write(Count);
     }
 }
