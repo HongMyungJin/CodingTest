@@ -59,7 +59,7 @@ public class Codetree
             data[second].Add(first);
         }
 
-        for (int i = 0; i < data[0].Count; i++)
+        for (int i = 0; i < N; i++)
         {
             visited[i] = true;
             DFS(i, 0);
