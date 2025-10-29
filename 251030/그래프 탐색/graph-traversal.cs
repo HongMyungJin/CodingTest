@@ -11,6 +11,7 @@ public class Codetree
 
     private static void DFS(int vertex, int count)
     {
+        Max = Math.Max(Max, count);
         for (int i = 0; i < data[vertex].Count; i++)
         {
             int cur_v = data[vertex][i];
@@ -22,7 +23,7 @@ public class Codetree
             }
         }
 
-        Max = Math.Max(Max, count);
+       
     }
     public static void Main()
     {
