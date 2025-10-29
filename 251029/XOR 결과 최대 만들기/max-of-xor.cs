@@ -5,13 +5,13 @@ public class Codetree
 {
     private static int N;
     private static int M;
-    private static int Max;
+    private static long Max;
     private static List<int> inputs;
     private static List<int> outputs;
 
-    private static int XORSolve()
+    private static long XORSolve()
     {
-        int xorValue = outputs[0];
+        long xorValue = outputs[0];
         for (int i = 1; i < M; i++)
         {
             xorValue ^= outputs[i];
