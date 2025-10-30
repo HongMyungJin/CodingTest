@@ -26,7 +26,7 @@ public class Codetree
         {
             var (x, y) = Q.Dequeue();
 
-            if (x == N - 1 && y == N - 1)
+            if (x == N - 1 && y == M - 1)
             {
                 return true;
             }
