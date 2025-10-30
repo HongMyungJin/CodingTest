@@ -15,7 +15,7 @@ public class Codetree
 
     private static bool IsInRange(int x, int y)
     {
-        return x >= 0 && y >= 0 && x < N && y < N;
+        return x >= 0 && y >= 0 && x < N && y < M;
     }
     private static bool Solve()
     {
@@ -69,7 +69,7 @@ public class Codetree
             BFS.Add(new List<int>());
             Visited.Add(new List<bool>());
 
-            for (int t = 0; t < N; t++)
+            for (int t = 0; t < M; t++)
             {
                 BFS[i].Add(int.Parse(lines[t]));
                 Visited[i].Add(false);
