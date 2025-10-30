@@ -15,7 +15,7 @@ public class Codetree
 
     private static bool IsInRange(int x, int y)
     {
-        return x >= 0 && y >= 0 && x < N && y < M;
+        return x >= 0 && y >= 0 && x < M && y < N;
     }
     private static bool Solve()
     {
@@ -26,7 +26,7 @@ public class Codetree
         {
             var (x, y) = Q.Dequeue();
 
-            if (x == N - 1 && y == M - 1)
+            if (x == M - 1 && y == N - 1)
             {
                 return true;
             }
