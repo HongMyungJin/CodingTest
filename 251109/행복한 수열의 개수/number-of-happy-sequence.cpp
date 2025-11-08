@@ -20,6 +20,11 @@ int main() {
     // row
     for (int i = 0; i < n; i++)
     {
+        if (m == 1)
+        {
+            nValue++;
+            continue;
+        }
         int sequence = 1;
         for (int j = 1; j < n; j++)
         {
@@ -43,6 +48,11 @@ int main() {
     // col
     for (int i = 0; i < n; i++)
     {
+        if (m == 1)
+        {
+            nValue++;
+            continue;
+        }
         int sequence = 1;
         for (int j = 1; j < n; j++)
         {
