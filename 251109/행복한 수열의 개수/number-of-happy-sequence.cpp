@@ -21,12 +21,19 @@ int main() {
     for (int i = 0; i < n; i++)
     {
         int sequence = 1;
+        int max = 0;
         // col
         for (int j = 1; j < n; j++)
         {
             if (values[i][j - 1] == values[i][j])
             {
                 sequence++;
+
+                max = max < sequence ? sequence : max;
+            }
+            else
+            {
+                sequence = 1;
             }
         }
 
@@ -40,12 +47,18 @@ int main() {
     for (int i = 0; i < n; i++)
     {
         int sequence = 1;
+        int max = 0;
         // col
         for (int j = 1; j < n; j++)
         {
             if (values[j - 1][i] == values[j][i])
             {
                 sequence++;
+                max = max < sequence ? sequence : max;
+            }
+            else
+            {
+                sequence = 1;
             }
         }
 
