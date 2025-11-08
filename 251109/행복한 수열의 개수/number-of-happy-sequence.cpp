@@ -23,6 +23,7 @@ int main() {
         int sequence = 1;
         int max = 0;
         // col
+        bool isSequence = false;
         for (int j = 1; j < n; j++)
         {
             if (values[i][j - 1] == values[i][j])
@@ -35,9 +36,13 @@ int main() {
             {
                 sequence = 1;
             }
+            if (sequence >= m)
+            {
+                isSequence = true;
+            }
         }
 
-        if (sequence >= m)
+        if (isSequence)
         {
             nValue++;
         }
@@ -49,20 +54,25 @@ int main() {
         int sequence = 1;
         int max = 0;
         // col
+        bool isSequence = false;
         for (int j = 1; j < n; j++)
         {
             if (values[j - 1][i] == values[j][i])
             {
                 sequence++;
-                max = max < sequence ? sequence : max;
             }
             else
             {
                 sequence = 1;
             }
+
+            if (sequence >= m)
+            {
+                isSequence = true;
+            }
         }
 
-        if (sequence >= m)
+        if (isSequence)
         {
             nValue++;
         }
