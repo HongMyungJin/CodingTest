@@ -37,6 +37,15 @@ int main() {
     // 한줄 체크
     while(true)
     {
+         // 1 1 1
+        // 1 * 1 칸 
+        // 1열
+        // 0열 ~ 1
+
+        if (K == K + M)
+        {
+            move = false;
+        }
         for (int x = K; x < K + M; x++)
         {
             // 범위에 있고 1이면 멈추기
