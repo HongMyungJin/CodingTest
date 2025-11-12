@@ -33,7 +33,7 @@ int main() {
     // 모든 x 좌표 돌기
     // 모든 x 좌표를 기준으로 아래에
     int y = 0;
-    bool move = true;
+    bool move = false;
     // 한줄 체크
     while(true)
     {
@@ -45,6 +45,8 @@ int main() {
                 move = false;
                 break;
             }
+
+            move = true;
         }
         if (!move)
         {
