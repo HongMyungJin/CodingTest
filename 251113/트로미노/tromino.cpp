@@ -91,15 +91,16 @@ int main() {
                             }
                             sum += values[newRow][newCol];
                         }
+
+                        if (!ok)
+                        {
+                            break;
+                        }
                     }
 
                     if (ok)
                     {
                         max = max < sum ? sum : max;
-                    }
-                    else
-                    {
-                        break;
                     }
                     cur = rotate(cur);
                 }
