@@ -19,6 +19,12 @@ int main() {
     {
         cin >> inputs[i];
     }
+
+    if (M == 1)
+    {
+        cout << 0 << '\n';
+        return 0;
+    }
     bool remove = true;
 
     while(remove)
