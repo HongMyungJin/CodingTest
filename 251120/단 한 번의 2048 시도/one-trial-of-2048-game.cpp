@@ -96,7 +96,7 @@ int main() {
     cin >> dir;
 
     // 방향에 따른 회전
-    RotateData(inputDir[dir]);
+    RotateData(inputDir[dir] % 4);
     // 중력 적용
     DropData();
     // 합치기
@@ -105,7 +105,7 @@ int main() {
     DropData();
 
     // 다시 회전 원복
-    RotateData(4 - inputDir[dir]);
+    RotateData((4 - inputDir[dir]) % 4);
 
     Print();
     return 0;
