@@ -3,8 +3,8 @@
 using namespace std;
 
 int N, M, T;
-int dirX[] = {0, 0, -1, 1};
-int dirY[] = {-1, 1, 0, 0};
+int dirY[] = {0, 0, -1, 1};
+int dirX[] = {-1, 1, 0, 0};
 
 bool InRange(int x, int y)
 {
@@ -78,11 +78,8 @@ int main() {
     int row, col;
     for (int i = 0; i < M; i++)
     {
-        for (int j = 0; j < 2; j++)
-        {
-            cin >> row >> col;
-            values[row - 1][col - 1] = 1;
-        }
+        cin >> row >> col;
+        values[row - 1][col - 1] = 1;
     }
 
     for (int t = 0; t < T; t++)
