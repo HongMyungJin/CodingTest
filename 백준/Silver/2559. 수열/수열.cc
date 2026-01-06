@@ -1,32 +1,29 @@
 #include <iostream>
 #include <vector>
-#include <climits>
-#include <math.h>
+using namespace std;
+
 int main()
 {
-    int N;
-    int Day;
-    std::vector<int> PrefixSum = { 0, };
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
 
-    std::cin >> N;
-    std::cin >> Day;
+	int N, K;
+	int input;
+	int max = -2100000000;
+	cin >> N >> K;
 
-    PrefixSum.resize(N + 1);
+	vector<int> prefix(N + 1, 0);
+	for (int i = 1; i < N + 1; i++)
+	{
+		cin >> input;
+		prefix[i] = prefix[i - 1] + input;
 
-    for (int i = 1; i < N + 1; i++)
-    {
-        std::cin >> PrefixSum[i];
-        PrefixSum[i] += PrefixSum[i - 1];
-    }
+		if (i >= K)
+		{
+			int cur = prefix[i] - prefix[i - K];
+			max = max > cur ? max : cur;
+		}
+	}
 
-    int CurValue = 0;
-    int Max = INT_MIN;
-    for (int t = 1; t < N + 2 - Day; t++)
-    { 
-        CurValue = PrefixSum[t + Day - 1] - PrefixSum[t - 1];
-        Max = std::max(Max, CurValue);
-    }
-
-    std::cout << Max << std::endl;
-    return 0;
+	cout << max;
 }
