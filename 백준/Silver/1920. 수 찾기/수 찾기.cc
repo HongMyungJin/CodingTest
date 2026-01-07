@@ -1,35 +1,65 @@
 #include <iostream>
-#include <unordered_map>
+#include <vector>
+#include <algorithm>
 using namespace std;
+
+// 반복문
+bool binary_search(int m, vector<int>& nums)
+{
+	int start = 0;
+	int end = nums.size() - 1;
+
+	while (start <= end)
+	{
+		int mid = (start + end) / 2;
+
+		// m이랑 같다면
+		if (nums[mid] == m)
+		{
+			return true;
+		} // 크다면
+		else if (nums[mid] < m)
+		{
+			start = mid + 1;
+		} // 작다면
+		else
+		{
+			end = mid - 1;
+		}
+	}
+
+	return false;
+}
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
 
 	int N, M;
-	int data;
-	unordered_map<int, int> values;
-	
 	cin >> N;
+	vector<int> nums(N);
 
+	int num;
 	for (int i = 0; i < N; i++)
 	{
-		cin >> data;
-		values[data] = data;
+		cin >> nums[i];
 	}
+	// 이분탐색 위한 정렬
+	sort(nums.begin(), nums.end());
 
 	cin >> M;
 	for (int i = 0; i < M; i++)
 	{
-		cin >> data;
-		
-		if (values.count(data) != 0)
-			cout << 1 << '\n';
-		else
-			cout << 0 << '\n';
+		cin >> num;
 
+		if (binary_search(num, nums))
+		{
+			cout << 1 << '\n';
+		}
+		else
+		{
+			cout << 0 << '\n';
+		}
 	}
-	return 0;
 }
