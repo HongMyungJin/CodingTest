@@ -2,43 +2,51 @@
 #include <vector>
 using namespace std;
 
+
 int main()
 {
-	int n, m;
-	vector<int> values;
-	cin >> n >> m;
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
 
-	values.resize(n);
-	for (int i = 0; i < n; i++)
+	int N, M;
+
+	cin >> N >> M;
+
+	int n;
+	vector<int> nums(N);
+	for (int i = 0; i < nums.size(); i++)
 	{
-		cin >> values[i];
+		cin >> nums[i];
 	}
 
-	int left = 0;
-	int right = 0;
+	int start = 0;
+	int end = 0;
 
-	int sum = 0;
-	int count = 0;
+	int subSum = 0;
+	int subSumN = 0;
 	while (true)
 	{
-		if (sum > m) // 클 경우
+		if (M < subSum)
 		{
-			sum -= values[left++];
+			subSum -= nums[start];
+			start++;
 		}
-		else if (sum < m) // 작을 경우
+		else
 		{
-			if (right >= values.size())
+			if (end >= nums.size())
+			{
 				break;
-			sum += values[right++];
+			}
+			subSum += nums[end];
+			end++;
 		}
 
-		if(sum == m)
+		if (subSum == M)
 		{
-			count++;
-			sum -= values[left++];
+			subSumN++;
 		}
+
 	}
 
-	cout << count;
-	return 0;
+	cout << subSumN;
 }
